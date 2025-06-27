@@ -20,9 +20,6 @@ public class User {
     @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    @Column(name = "userAddress")
-    private String address;
-
     @ManyToOne
     @JoinColumn(name = "Clinic_id", nullable = true)
     private Clinic clinic;
@@ -30,11 +27,10 @@ public class User {
     public User(){
     }
 
-    public User(String firstName,String lastName, String phoneNumber, String address,Clinic clinic){
+    public User(String firstName,String lastName, String phoneNumber, Clinic clinic){
         this.firstName=firstName;
         this.lastName=lastName;
         this.phoneNumber=phoneNumber;
-        this.address=address;
         this.clinic=clinic;
     }
 
@@ -68,14 +64,6 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public Clinic getClinic() {

@@ -21,7 +21,7 @@ public class Instructor extends User{
     }
 
     public Instructor(String firstName, String lastName, String phoneNumber, String address, Clinic clinic, String username, String password, String email) {
-        super(firstName, lastName, phoneNumber, address, clinic);
+        super(firstName, lastName, phoneNumber, clinic);
         this.username = username;
         this.password = password;
         this.email = email;

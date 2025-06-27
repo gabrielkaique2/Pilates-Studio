@@ -1,34 +1,89 @@
 package com.StudioPilates.StudioPilates.model;
 
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
 
-@Entity
-@Table(name = "Users")
+//@Entity
+//@Table(name = "Users")
+@MappedSuperclass
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String name;
+    @Column(name = "firstName", nullable = false)
+    private String firstName;
 
-    private String email;
+    @Column(name = "lastName", nullable = false)
+    private String lastName;
 
+    @Column(name = "phoneNumber", nullable = false)
     private String phoneNumber;
 
-    private String userName;
+    @Column(name = "userAddress")
+    private String address;
 
-    private String password;
+    @ManyToOne
+    @JoinColumn(name = "Clinic_id", nullable = true)
+    private Clinic clinic;
 
     public User(){
     }
 
-    public User(String name, String email, String phoneNumber, String userName, String password){
-        this.name=name;
-        this.email=email;
+    public User(String firstName,String lastName, String phoneNumber, String address,Clinic clinic){
+        this.firstName=firstName;
+        this.lastName=lastName;
         this.phoneNumber=phoneNumber;
-        this.userName=userName;
-        this.password=password;
+        this.address=address;
+        this.clinic=clinic;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String name) {
+        this.firstName = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Clinic getClinic() {
+        return clinic;
+    }
+
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
+    }
+
 }

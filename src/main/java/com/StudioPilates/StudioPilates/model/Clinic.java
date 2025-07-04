@@ -1,7 +1,10 @@
 package com.StudioPilates.StudioPilates.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.springframework.context.annotation.Primary;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Clinics")
@@ -18,6 +21,14 @@ public class Clinic {
 
     @Column(name = "phoneNumber")
     private String phoneNumber;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL)
+    private List<Instructor> instructorsList;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL)
+    private List<Patient> patientsList;
 
     public Clinic(){
     }

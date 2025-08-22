@@ -3,6 +3,7 @@ package com.StudioPilates.StudioPilates.controller;
 import com.StudioPilates.StudioPilates.exception.ResourceNotFoundException;
 import com.StudioPilates.StudioPilates.model.Anamnesis;
 import com.StudioPilates.StudioPilates.repository.AnamnesisRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,14 @@ public class AnamnesisController {
     @GetMapping
     public List<Anamnesis> getAllAnamnesis(){
         return  anamnesisRepository.findAll();
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Anamnesis> getAnamnesisById(@PathVariable Long id){
+        Anamnesis anamnesis = anamnesisRepository.findById(id)
+                .orElseThrow(()->new ResourceNotFoundException("Anamnesis not found with id " + id));
+
+        return ResponseEntity.ok(anamnesis);
     }
 
     //Update

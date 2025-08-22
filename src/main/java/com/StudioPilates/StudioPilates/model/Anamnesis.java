@@ -19,6 +19,7 @@ public class Anamnesis {
     @Column(name = "pilatesGoal")
     private String pilatesGoal;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "AvaliationDate")
     private Date avaliationDate;
 

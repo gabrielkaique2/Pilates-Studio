@@ -17,14 +17,18 @@ public class Instructor extends User{
     @Column(name = "email")
     private String email;
 
+    @Column(name = "role")
+    private String role;
+
     public Instructor() {
     }
 
-    public Instructor(String firstName, String lastName, String phoneNumber, String address, Clinic clinic, String username, String password, String email) {
+    public Instructor(String firstName, String lastName, String phoneNumber, String address, Clinic clinic, String username, String password, String email, String role) {
         super(firstName, lastName, phoneNumber, clinic);
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -51,4 +55,11 @@ public class Instructor extends User{
         this.email = email;
     }
 
+    public String getRole(){
+        return role;
+    }
+
+    public void setRole(String role){
+        this.role = role;
+    }
 }
